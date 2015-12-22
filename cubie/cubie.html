@@ -1,0 +1,153 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html><head>
+<title>Cubie</title>
+</head>
+<body bgcolor=white>
+
+
+
+
+
+<table width=100%><tr><td>
+<table border=2 cellpadding=0 cellspacing=0><tr><td><applet code="Cubie.class" width=520 height=400></applet></td></tr></table>
+</td><td>
+<p><font face="Arial" size=2>Written by Jaap Scherphuis &copy; 2003-2004.</font></p>
+<p><font face="Arial" size=2>
+The program may be freely used or adapted for use on any other website
+provided that the above copyright message remains intact and a link is
+included to <a href="http://www.geocities.com/jaapsch/puzzles/">Jaap's Puzzle Page</a>.
+The program may not be sold.
+<br>
+Download the <a href="Cubie.jar">Jar file</a> or the <a href="cubiesrc.zip">source files</a>.
+</font></p>
+</td></table>
+
+<p><b><font face="Arial" size=2><font size=4>Cubie</font></b>
+
+<p><font face="Arial" size=2>
+Cubie is a Rubik's Cube Java Applet. There are already very many such applets on the internet, so I have tried to do something a little bit different with this one. It has the following features, which are explained more fully below:</font></p>
+
+<ol type=a>
+<li><font face="Arial" size=2>The cube is fully playable. Middle slices can be turned, as well as the whole cube.</font></li>
+<li><font face="Arial" size=2>The cube can be viewed in four ways, such as a fully 3D model, or as a flat layout. The view can be switched at any time.</font></li>
+<li><font face="Arial" size=2>It has a powerful built-in solver. It uses a simplified version of the two-phase algorithm devised by Herbert Kociemba.</font></li>
+<li><font face="Arial" size=2>Instead of a solution move sequence, the generator can be shown, i.e. the move sequence that gives a cube pattern instead of solving it.</font></li>
+<li><font face="Arial" size=2>A solution/generator sequence can be played back.</font></li>
+<li><font face="Arial" size=2>The orientation of the cube's face centres can be made visible, i.e. the supergroup is used.</font></li>
+<li><font face="Arial" size=2>The cube can be edited, i.e. the pieces can be rearranged to form any preset pattern. The colour scheme may also be changed.</font></li>
+<li><font face="Arial" size=2>Any move sequence can be typed in and shown on the cube.</font></li>
+<li><font face="Arial" size=2>Play can be restricted to one of 4 subgroups of the cube, namely the Square group (half turns only), the Slice group, the Anti-Slice group, or the two-generator group (R and U faces only).</font></li>
+<li><font face="Arial" size=2>For each group it is always shown whether the current cube pattern lies within it.</font></li>
+<li><font face="Arial" size=2>For each of the aforementioned subgroups there is an optimal solver, able to give the shortest possible move sequence that solves (or generates) a position in that group.</font></li>
+<li><font face="Arial" size=2>The type of symmetry of the current cube pattern can be shown.</font></li>
+<li><font face="Arial" size=2>The cube and its solution/generator sequence can be rotated or reflected in every way.</font></li>
+<li><font face="Arial" size=2>The cube can be mixed randomly while still conforming to a particular symmetry type.</font></li>
+<li><font face="Arial" size=2>Random pretty patterns can be generated easily.</font></li>
+</ol>
+
+<p><font face="Arial" size=2><b>a. Playing.</b><br>
+Simply drag the facelet of any piece in the direction that you wish to move it and then that move will be performed. If you hold down the Shift key when you do a move, it will be a half turn instead of a quarter turn. Similarly holding down the Ctrl or Alt key performs a slice or anti-slice move respectively (note that his may be combined with the shift key). If you drag a face centre then the whole cube will move in that direction.
+<br>In the 3D view, dragging the mouse from a position outside the cube allows you to turn the whole cube freely. The MIX button causes the cube to become randomly mixed, and the RESET button puts it in the solved position.
+</font></p>
+
+<p><font face="Arial" size=2><b>b. Viewing.</b><br>
+Click the Change View button to switch between the four possible views. The Reset View button will rotate the cube back to its original orientation.
+</font></p>
+
+<p><font face="Arial" size=2><b>c. Solving (normal).</b><br>
+Click the Solve button to start the solver. While it is searching a green light will show, and when it has found a solution it will be shown in the text box. The solution may not be the best possible, so pressing the Solve button again restarts the solver so that it can try to find a better solution. The search may be interrupted by pressing the button (now marked Stop) while the solver is running.
+<br>Note there is a subtle difference between the 3D cube viewer, and the other three viewers. In the 3D viewer there is no fixed cube orientation. Therefore, regardless of the actual orientation of the cube, the Blue face on the 3D cube is considered the U (Up) face, and Yellow is the F (Front) face.
+<br>The solver uses the two-phase algorithm devised by Herbert Kociemba. The best version of this algorithm can currently be found in Herbert's
+<a href="http://home.t-online.de/home/kociemba/cube.htm" target="blank">Cube Explorer</a>.
+This applet uses much smaller pruning tables, so it will certainly not be as fast as that. Note
+also that older Java virtual machines tend to be quite a bit slower than more up to
+date ones (though Cubie will run in Java 1.1).
+<br>When the applet has just started, a red light will show while the solver prepares various tables for the algorithm. This should only take a few seconds during which time the solver is not available.
+</font></p>
+
+<p><font face="Arial" size=2><b>d. Solution/Generator.</b><br>
+The move sequence that the solver gives is usually a solution, i.e. the move sequence solves the current cube position. Pressing the Solution button next to the text box changes it to Generator. The move sequence has now been inverted, so that it has become the sequence that generates the current cube position when performed on a clean cube. This may be of use when you wish to recreate pretty patterns.
+</font></p>
+
+<p><font face="Arial" size=2><b>e. Playback.</b><br>
+When there is a move sequence in the text box, the six playback buttons below it can be used to show the move sequence being performed on the cube. There are six buttons. The two outer ones (showing two triangles with a vertical bar) jump forward or backwards to the start or end position. The step buttons (showing a single triangle with a vertical bar) perform a single move of the sequence. The playback buttons (showing only a single triangle) play through the whole sequence step by step. Note that the current position within the move sequence is marked by an underscore _ character.
+</font></p>
+
+<p><font face="Arial" size=2><b>f. Supergroup.</b><br>
+By checking the Supergroup box, the orientation of the cube's face centres is made visible. The solver will now also take those orientations into account, so it may take a lot longer for a solution to be found.
+</font></p>
+
+<p><font face="Arial" size=2><b>g. Editing.</b><br>
+Press the Edit button to go into edit mode. You may can now rearrange the cube position as follows:
+<br>1. Drag a facelet of one piece to the facelet of another. This swaps those two pieces.
+<br>2. Drag a facelet of one piece to another facelet of the same piece. This twists or flips that piece.
+<br>3. Click a centre facelet. This twists that centre facelet, but this is only visible if the supergroup box has been ticked.
+<br>4. Drag a centre facelet to another centre facelet. This swaps those two colours wherever they occur on the cube. Note that this change is permanent, and is not affected by the Reset button.
+<br>When you have finished, press the Play button (and it will change back into the Edit button), and then the cube can be played with.
+</font></p>
+
+<p><font face="Arial" size=2><b>h. Inputting.</b><br>
+To input a move sequence, just type it into the text box, and press enter. The cube will change to that position accordingly. You may also edit a move sequence that was generated by the solver. Remember that the sequence can be either a generator or a solution.
+</font></p>
+
+<p><font face="Arial" size=2><b>i. Subgroups.</b><br>
+You may choose a particular cube group by clicking on the list on the right. When in a subgroup, only moves in that group are allowed. In the square group for example, every move will automatically be a half turn. In the slice and anti-slice groups moving one face will cause its opposite face to move as well. In the two-generator group only moves of the right and up faces will be allowed.
+</font></p>
+
+<p><font face="Arial" size=2><b>j. Indicators.</b><br>
+The tick marks next to the list of subgroups indicate whether or not the current cube position can be solved within each subgroup. Note that the indicator next to the Normal cube group shows whether the cube can be solved without taking it apart. It is possible to create such an impossible position when editing by swapping two pieces or twisting a single piece.
+</font></p>
+
+<p><font face="Arial" size=2><b>k. Solving (subgroups).</b><br>
+If a subgroup is selected, and the current position can be solved in that subgroup (i.e. its indicator has a tick mark) then you can press the solve button to solve it. A solution will then be found that is as short as possible. Pressing the Solve button again will give alternative solutions, but these might not be optimal. If the supergroup box is marked, then the face centre orientations will be taken into account as well.
+</font></p>
+
+<p><font face="Arial" size=2><b>l. Symmetry type.</b><br>
+Choose the Symmetries tab on the right. The symmetry type of the current cube is shown at the top left.
+</font></p>
+
+<p><font face="Arial" size=2><b>m. Rotating/reflecting.</b><br>
+In the symmetries tab there are many buttons showing the various rotations/reflections. Hold down shift (or Alt) and click any such button to perform that rotation/reflection on the current cube.
+If you hold down Control and click a button, the rotation/reflection is done on the moving pieces
+only and not on the face centres.
+</font></p>
+
+<table cellpadding=0 cellspacing=0 width="70%" align=center><tr><td>
+<table><tr>
+<td><img src="sym_r2e.gif" width=43 height=31 alt=""></td>
+<td><font size=2 face="Arial">Rotation around edge</font></td>
+</tr><tr>
+<td><img src="sym_r3.gif" width=43 height=31 alt=""></td>
+<td><font size=2 face="Arial">Rotation around corner</font></td>
+</tr><tr>
+<td><img src="sym_r2f.gif" width=43 height=31 alt=""></td>
+<td><font size=2 face="Arial">1/2 Rotation around face</font></td>
+</tr><tr>
+<td><img src="sym_r4.gif" width=43 height=31 alt=""></td>
+<td><font size=2 face="Arial">1/4 Rotation around face</font></td>
+</tr></table>
+</td><td>
+<table><tr>
+<td><img src="sym_mf.gif" width=87 height=31 alt=""></td>
+<td><font size=2 face="Arial">Reflection through a plane</font></td>
+</tr><tr>
+<td><img src="sym_m4.gif" width=43 height=31 alt=""></td>
+<td><font size=2 face="Arial">Reflection/rotation through a plane</font></td>
+</tr><tr>
+<td><img src="sym_mc.gif" width=43 height=31 alt=""></td>
+<td><font size=2 face="Arial">Reflection through the centre</font></td>
+</tr></table>
+</td></tr></table>
+
+<p><font face="Arial" size=2><b>n. Random symmetric patterns.</b><br>
+Click any rotation/reflection buttons (without shift) to select or deselect them. The symmetry group generated by the selected rotations/reflections is shown on the right. Pressing the Clear button deselects them all again. Press the Mix button to generate a random pattern conforming to the chosen symmetry type.
+</font></p>
+
+<p><font face="Arial" size=2><b>o. Random pretty patterns.</b><br>
+If the Two Colours box is ticked, then pressing the Mix button will generate a random pattern that conforms to the selected symmetry and also has at most two colours on each face of the cube. These patterns tend to be very pretty.
+</font></p>
+
+<p>&nbsp;</p>
+
+</body>
+</html>
